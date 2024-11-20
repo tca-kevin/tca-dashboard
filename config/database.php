@@ -62,6 +62,19 @@ return [
             ]) : [],
         ],
 
+        'wordpress' => [ // for WordPress database (used by Corcel)
+            'driver'    => 'mysql',
+            'host' => env('WP_HOST', '127.0.0.1'),
+            'database' => env('WP_DATABASE', 'laravel'),
+            'username' => env('WP_USERNAME', 'root'),
+            'password' => env('WP_PASSWORD', ''),
+            'charset' => env('WP_CHARSET', 'utf8mb4'),
+            'collation' => env('WP_COLLATION', 'utf8mb4_unicode_ci'),
+            'prefix'    => 'wp_',
+            'strict'    => false,
+            'engine'    => null,
+        ],
+
         'mariadb' => [
             'driver' => 'mariadb',
             'url' => env('DB_URL'),
@@ -147,7 +160,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
         ],
 
         'default' => [

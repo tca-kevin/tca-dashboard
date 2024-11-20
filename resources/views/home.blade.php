@@ -8,6 +8,20 @@
 	</x-slot:styles>
 
 	<div>
+		@php
+		// All published posts
+		$posts = \Corcel\Model\Post::published()->get();
+		$posts = \Corcel\Model\Post::status('publish')->get();
+
+		// A specific post
+		$posts = \Corcel\Model\Post::where('post_type', 'product')->latest()->take(100)->get();
+		@endphp
+
+		@foreach ($posts as $post)
+		<div>
+			<div>{{ $post->title }}</div>
+		</div>
+		@endforeach
 	</div>
 
 	<x-slot:scripts>
